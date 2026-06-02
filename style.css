@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@500;700&display=swap');
+
+/* 1. Apply Inter font safely to text elements only */
+html, body, p, a, div { font-family: 'Inter', sans-serif; }
+
+/* 2. Force Oswald on all Headers and Numbers */
+h1, h2, h3, h4, .kpi-value, .stMetricValue { 
+    font-family: 'Oswald', sans-serif !important; 
+    text-transform: uppercase;
+}
+
+/* 3. Protect Streamlit's Native Icons */
+.material-symbols-rounded, .stIcon, [data-testid="stIconMaterial"] { 
+    font-family: 'Material Symbols Rounded' !important; 
+}
+
+/* 4. Spacing */
+.block-container { padding: 0 2.5rem 3rem !important; max-width: 1280px !important; }
+
+/* 5. Hide unwanted UI elements, keep header transparent */
+#MainMenu, footer { visibility: hidden; }
+header { background-color: transparent !important; }
+
+/* ── HERO ── */
+.hero { background: transparent; padding: 40px 0 30px; text-align: center; margin: 0 -2.5rem 30px; border-bottom: 1px solid rgba(242, 101, 34, 0.2); }
+.hero-tag { display: inline-block; background: rgba(242,101,34,0.12); border: 1px solid rgba(242,101,34,0.3); color: #F26522; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
+.hero h1 { color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: -1px; margin: 0 0 12px; line-height: 1.1; }
+.hero h1 span { color: #F26522; }
+.hero p { color: #8892a4; font-size: 1rem; margin: 0; }
+
+/* ── SECTION TITLE ── */
+.sec-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #F26522; margin: 36px 0 16px; display: flex; align-items: center; gap: 10px; }
+.sec-title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+/* ── KPI GLASSMORPHISM CARDS ── */
+.kpi-wrap { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 32px; }
+.kpi {
+    flex: 1;
+    background: rgba(26, 38, 52, 0.6) !important; 
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(242, 101, 34, 0.2) !important; 
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(242, 101, 34, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.kpi:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(242, 101, 34, 0.15), inset 0 0 15px rgba(242, 101, 34, 0.1);
+    border: 1px solid rgba(242, 101, 34, 0.5) !important;
+}
+.kpi-value {
+    font-size: 3.5rem !important;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F26522 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 4px 15px rgba(242, 101, 34, 0.3);
+    margin-bottom: 6px;
+    line-height: 1;
+}
+.kpi-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #94a3b8; }
+
+/* ── ANGLE CARD ── */
+.angle-item { background: #1A2634; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+.angle-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.angle-name { font-weight: 600; font-size: 0.88rem; color: #F8FAFC; }
+.angle-score { font-weight: 700; font-size: 0.88rem; }
+.angle-meta { font-size: 0.78rem; color: #94a3b8; margin-bottom: 8px; }
+.bar-bg { background: #0F1923; border-radius: 4px; height: 6px; }
+.bar-fill { height: 6px; border-radius: 4px; }
+.chip-good { background: rgba(34,197,94,0.2); color: #4ade80; font-size: 0.7rem; font-weight: 700; padding: 2px 10px; border-radius: 10px; }
+.chip-bad { background: rgba(239,68,68,0.2); color: #f87171; font-size: 0.7rem; font-weight: 700; padding: 2px 10px; border-radius: 10px; }
+
+/* ── FEEDBACK CARDS ── */
+.fb-fix { background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.2); border-left: 3px solid #ef4444; border-radius: 10px; padding: 16px 18px; margin-bottom: 12px; }
+.fb-fix .fb-title { font-weight: 700; font-size: 0.88rem; color: #fca5a5; margin-bottom: 4px; }
+.fb-fix .fb-meta  { font-size: 0.78rem; color: #f87171; margin-bottom: 6px; }
+.fb-fix .fb-body  { font-size: 0.85rem; color: #cbd5e1; line-height: 1.6; }
+
+.fb-good { background: rgba(34,197,94,0.05); border: 1px solid rgba(34,197,94,0.2); border-left: 3px solid #22c55e; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+.fb-good .fb-title { font-weight: 700; font-size: 0.88rem; color: #86efac; margin-bottom: 4px; }
+.fb-good .fb-body  { font-size: 0.83rem; color: #cbd5e1; }
+
+.fb-drill { background: rgba(59,130,246,0.05); border: 1px solid rgba(59,130,246,0.2); border-left: 3px solid #3b82f6; border-radius: 10px; padding: 16px 18px; margin-bottom: 12px; }
+.fb-drill .fb-title { font-weight: 700; font-size: 0.88rem; color: #93c5fd; margin-bottom: 6px; }
+.fb-drill .fb-body  { font-size: 0.83rem; color: #cbd5e1; line-height: 1.7; }
+
+/* ── COACH BANNER ── */
+.coach-banner { background: linear-gradient(135deg, #1A2634, #0F1923); border: 1px solid rgba(242,101,34,0.3); border-radius: 14px; padding: 28px 32px; margin: 24px 0; color: #e2e8f0; font-size: 0.92rem; line-height: 1.7; }
+.coach-banner strong { color: #F26522; font-family: 'Oswald', sans-serif; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; }
+
+/* ── UPLOAD PLACEHOLDER & PROGRESS EMPTY ── */
+.upload-placeholder, .prog-empty { background: rgba(255,255,255,0.02); border: 2px dashed rgba(255,255,255,0.1); border-radius: 14px; padding: 64px 20px; text-align: center; color: #94a3b8; }
+.upload-placeholder .up-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.upload-placeholder h4, .prog-empty h3 { color: #F8FAFC; font-size: 1rem; margin: 0 0 6px; }
+.upload-placeholder p, .prog-empty p { font-size: 0.83rem; margin: 0; }
+
+/* ── HOW IT WORKS ── */
+.step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+.step { background: #1A2634; border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; padding: 28px 22px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.step-num { width: 42px; height: 42px; background: #F26522; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; font-family: 'Oswald', sans-serif; margin: 0 auto 14px; }
+.step h4 { color: #F8FAFC; font-size: 0.95rem; margin: 0 0 8px; font-weight: 700; }
+.step p  { color: #94a3b8; font-size: 0.83rem; margin: 0; line-height: 1.6; }
+
+/* ── TECH CHIPS & FILE UPLOADER ── */
+.tech-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+.tech-chip { background: #1A2634; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px 18px; font-size: 0.83rem; font-weight: 600; color: #cbd5e1; }
+.tech-chip span { color: #F26522; margin-right: 6px; }
+[data-testid="stFileUploader"] > div { background: rgba(255,255,255,0.02) !important; border: 2px dashed rgba(255,255,255,0.1) !important; border-radius: 12px !important; }

@@ -1,0 +1,15 @@
+[theme]
+# High-energy Orange for primary accents (buttons, sliders, toggles)
+primaryColor = "#F26522" 
+
+# Deep, immersive dark slate for the main background
+backgroundColor = "#0F1923" 
+
+# Slightly lighter slate to make sidebar and secondary elements pop
+secondaryBackgroundColor = "#1A2634" 
+
+# Crisp, readable white text
+textColor = "#F8FAFC" 
+
+# Clean, modern sans-serif font
+font = "sans serif"

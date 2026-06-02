@@ -1,0 +1,6 @@
+streamlit
+pandas
+mediapipe
+opencv-python-headless
+fpdf
+streamlit-lottie
