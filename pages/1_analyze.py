@@ -167,10 +167,10 @@ with col_pose:
                     
             time.sleep(0.5) 
             
-            # Convert the PIL image into a strict mathematical matrix for MediaPipe
-            image_matrix = np.array(image_input)
+            # Force the image into a strict, C-contiguous 8-bit matrix for MediaPipe's C++ backend
+            image_matrix = np.ascontiguousarray(np.array(image_input.convert('RGB'), dtype=np.uint8))
             
-            # Run the heavy machine learning task on the matrix
+            # Run the heavy machine learning task on the safe matrix
             annotated, coords, success = analyze_pose(image_matrix)
             
             loading_placeholder.empty()
