@@ -1,4 +1,5 @@
 import streamlit as st
+import io
 import time
 from PIL import Image
 from datetime import datetime
@@ -165,12 +166,13 @@ with col_pose:
                     
             time.sleep(0.5) 
             
-            # Rewind the file pointer so the AI doesn't read a blank file
-            if hasattr(image_input, 'seek'):
-                image_input.seek(0)
+            # The ultimate Streamlit memory bypass:
+            # getvalue() grabs the raw bytes directly, ignoring file pointers.
+            raw_bytes = image_input.getvalue()
+            safe_image_buffer = io.BytesIO(raw_bytes)
             
-            # Run the heavy machine learning task on the selected frame
-            annotated, coords, success = analyze_pose(image_input)
+            # Run the heavy machine learning task on the safe buffer
+            annotated, coords, success = analyze_pose(safe_image_buffer)
             
             loading_placeholder.empty()
             
