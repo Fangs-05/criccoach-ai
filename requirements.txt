@@ -5,3 +5,4 @@ opencv-python-headless
 fpdf2
 streamlit-lottie
 plotly
+streamlit-authenticator
