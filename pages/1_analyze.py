@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 import io
 import time
 from PIL import Image
@@ -166,8 +167,11 @@ with col_pose:
                     
             time.sleep(0.5) 
             
-            # Run the heavy machine learning task on the selected frame
-            annotated, coords, success = analyze_pose(image_input)
+            # Convert the PIL image into a strict mathematical matrix for MediaPipe
+            image_matrix = np.array(image_input)
+            
+            # Run the heavy machine learning task on the matrix
+            annotated, coords, success = analyze_pose(image_matrix)
             
             loading_placeholder.empty()
             
