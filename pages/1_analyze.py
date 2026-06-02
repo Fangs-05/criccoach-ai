@@ -166,13 +166,8 @@ with col_pose:
                     
             time.sleep(0.5) 
             
-            # The ultimate Streamlit memory bypass:
-            # getvalue() grabs the raw bytes directly, ignoring file pointers.
-            raw_bytes = image_input.getvalue()
-            safe_image_buffer = io.BytesIO(raw_bytes)
-            
-            # Run the heavy machine learning task on the safe buffer
-            annotated, coords, success = analyze_pose(safe_image_buffer)
+            # Run the heavy machine learning task on the selected frame
+            annotated, coords, success = analyze_pose(image_input)
             
             loading_placeholder.empty()
             
