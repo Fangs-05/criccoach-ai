@@ -165,6 +165,10 @@ with col_pose:
                     
             time.sleep(0.5) 
             
+            # Rewind the file pointer so the AI doesn't read a blank file
+            if hasattr(image_input, 'seek'):
+                image_input.seek(0)
+            
             # Run the heavy machine learning task on the selected frame
             annotated, coords, success = analyze_pose(image_input)
             
