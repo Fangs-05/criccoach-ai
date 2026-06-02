@@ -47,21 +47,32 @@ LANDMARK_NAMES = {
 }
 
 def analyze_pose(image_input):
-    """
-    Takes PIL Image or numpy array
-    Returns: annotated_image, landmarks_dict, success_bool
-    """
-    # Convert to numpy RGB array safely
     try:
         if isinstance(image_input, Image.Image):
-            image_np = np.array(image_input.convert('RGB'))
+            image_np = np.ascontiguousarray(np.array(image_input.convert('RGB')))
         else:
-            image_np = image_input
+            image_np = np.ascontiguousarray(image_input)
+
+        options = PoseLandmarkerOptions(
+            base_options=BaseOptions(model_asset_path=MODEL_PATH),
+            running_mode=RunningMode.IMAGE,
+            num_poses=1,
+            min_pose_detection_confidence=0.5,
+            min_pose_presence_confidence=0.5,
+            min_tracking_confidence=0.5
+        )
+
+        with PoseLandmarker.create_from_options(options) as landmarker:
+            # Keep mp_image alive by assigning it BEFORE the detect call
+            mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=image_np)
+            result = landmarker.detect(mp_image)
+            # Explicitly delete after we're done to control destruction timing
+            del mp_image
 
         # Create MediaPipe image
         mp_image = mp.Image(
-            image_format=mp.ImageFormat.SRGB,
-            data=image_np
+        image_format=mp.ImageFormat.SRGB,
+        data=np.ascontiguousarray(image_np)  # ensures C-contiguous memory layout
         )
 
         # Run detection
