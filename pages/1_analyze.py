@@ -167,11 +167,16 @@ with col_pose:
                     
             time.sleep(0.5) 
             
-            # Force the image into a strict, C-contiguous 8-bit matrix for MediaPipe's C++ backend
-            image_matrix = np.ascontiguousarray(np.array(image_input.convert('RGB'), dtype=np.uint8))
+            # 1. Convert PIL to a raw numpy array
+            raw_numpy = np.array(image_input.convert('RGB'))
             
-            # Run the heavy machine learning task on the safe matrix
-            annotated, coords, success = analyze_pose(image_matrix)
+            # 2. The C++ Buffer Trick: Bounce the image through OpenCV to force 
+            # the allocation of a fresh, perfectly aligned memory matrix that MediaPipe loves.
+            bgr_buffer = cv2.cvtColor(raw_numpy, cv2.COLOR_RGB2BGR)
+            clean_matrix = cv2.cvtColor(bgr_buffer, cv2.COLOR_BGR2RGB)
+            
+            # 3. Run the heavy machine learning task on the sanitized matrix
+            annotated, coords, success = analyze_pose(clean_matrix)
             
             loading_placeholder.empty()
             
