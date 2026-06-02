@@ -10,10 +10,6 @@ BaseOptions = mp.tasks.BaseOptions
 PoseLandmarker = mp.tasks.vision.PoseLandmarker
 PoseLandmarkerOptions = mp.tasks.vision.PoseLandmarkerOptions
 RunningMode = mp.tasks.vision.RunningMode
-PoseLandmark = mp.tasks.vision.PoseLandmark
-drawing_utils = mp.tasks.vision.drawing_utils
-drawing_styles = mp.tasks.vision.drawing_styles
-PoseLandmarksConnections = mp.tasks.vision.PoseLandmarksConnections
 
 # Model path
 MODEL_PATH = "pose_landmarker_full.task"
