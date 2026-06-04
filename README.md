@@ -3,8 +3,7 @@
 CricCoach is a full-stack, dual-engine computer vision application designed to analyze and score cricket batting and bowling mechanics. Built as an end-to-end machine learning capstone project, it uses local 2D pose estimation to provide professional-grade biomechanical feedback without the need for expensive motion-capture equipment.
 
 ## Live Demo
-*(Insert your Streamlit Community Cloud link here once deployed)*
-
+https://criccoach.streamlit.app/
 ## Core Architecture & Features
 
 ### 1. Dual-Engine Analytics
